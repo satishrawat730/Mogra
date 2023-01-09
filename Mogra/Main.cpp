@@ -1,13 +1,10 @@
 /// Mogra - Modern Graphics Application
 
-// Windows Header Files:
-#include <windows.h>
-
-#define WINDOW_TITLE    "Mogra Editor"
+#include "Application.h"
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLine, int cmdShow)
 {
-   
+    auto app = std::make_unique<Application>(WINDOW_TITLE);
 
     return 0;
 }
