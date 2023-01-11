@@ -29,6 +29,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLine
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
 
+        // legacy code
+        glBegin(GL_TRIANGLES);
+        glVertex2f(-0.5f, -0.5f);
+        glVertex2f(0.f, 0.5f);
+        glVertex2f(0.5f, -0.5f);
+        glEnd();
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
 
