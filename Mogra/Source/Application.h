@@ -2,15 +2,22 @@
 #include "StdHeader.h"
 #include "GLWindow.h"
 
-class Application
-{
-public:
+#include "ShaderLibrary.h"
+
+namespace Mogra {
+
+  class Application
+  {
+  public:
     Application(const std::string& app_name);
     ~Application() = default;
 
     bool Run();
-private:
+  private:
+    void LoadShaders();
+
     std::unique_ptr<Mogra::GLWindow> mWindow;
     std::string AppName;
-};
+  };
 
+}

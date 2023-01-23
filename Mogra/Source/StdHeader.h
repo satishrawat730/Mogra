@@ -22,6 +22,10 @@
 #include <memory>
 #include <string>
 #include <vector>
+#include <map>
+#include <fstream>
+#include <sstream>
+#include <filesystem>
 
 #include <glew.h>
 #include <glfw3.h>

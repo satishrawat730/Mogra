@@ -145,14 +145,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Application.cpp" />
-    <ClCompile Include="GLWindow.cpp" />
-    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Source\ShaderLibrary.cpp" />
+    <ClCompile Include="Source\Shader.cpp" />
+    <ClCompile Include="Source\Application.cpp" />
+    <ClCompile Include="Source\GLWindow.cpp" />
+    <ClCompile Include="Source\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Application.h" />
-    <ClInclude Include="GLWindow.h" />
-    <ClInclude Include="StdHeader.h" />
+    <ClInclude Include="Source\ShaderLibrary.h" />
+    <ClInclude Include="Source\Shader.h" />
+    <ClInclude Include="Source\Application.h" />
+    <ClInclude Include="Source\GLWindow.h" />
+    <ClInclude Include="Source\StdHeader.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Shaders\BasicShader.frag" />
+    <None Include="Assets\Shaders\BasicShader.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

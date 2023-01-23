@@ -6,7 +6,7 @@
 //int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLine, int cmdShow)
 int main()
 {
-   auto app = std::make_unique<Application>(WINDOW_TITLE);
+   auto app = std::make_unique<Mogra::Application>(WINDOW_TITLE);
 
    app->Run();
 

@@ -1,47 +1,7 @@
 #include "GLWindow.h"
+#include "ShaderLibrary.h"
+
 namespace Mogra {
-
-  static unsigned int CompileShader(unsigned int type, const std::string& source) {
-      unsigned int id = glCreateShader(type);
-      const char* src = source.c_str();
-      glShaderSource(id, 1, &src, nullptr);
-      glCompileShader(id);
-
-
-      int result;
-      glGetShaderiv(id, GL_COMPILE_STATUS, &result);
-
-      if (!result) {
-        int length;
-        glGetShaderiv(id, GL_INFO_LOG_LENGTH, &length);
-        char* message  = (char*) alloca( length * sizeof(char));
-        glGetShaderInfoLog(id, length, &length, message);
-        std::cout << "Failed to compile "
-          << (type == GL_VERTEX_SHADER ? "Vertex" : "Fragment") << " shader";
-        std::cout << "\n" << message<< std::endl;
-
-      }
-
-      return id;
-  }
-
-  static unsigned int CreateShader(const std::string& vertexShader, const std::string& fragmentShader) {
-
-    unsigned int program = glCreateProgram();
-    unsigned int vs = CompileShader(GL_VERTEX_SHADER, vertexShader);
-    unsigned int fs = CompileShader(GL_FRAGMENT_SHADER, fragmentShader);
-
-    glAttachShader(program, vs);
-    glAttachShader(program, fs);
-
-    glLinkProgram(program);
-    glValidateProgram(program);
-
-    glDeleteShader(vs);
-    glDeleteShader(fs);
-
-    return program;
-  }
 
   GLWindow::GLWindow()
   {
@@ -106,21 +66,7 @@ namespace Mogra {
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     //glBindVertexArray(0);
 
-
-    std::string vertexShader = 
-      "#version 330 core\n"
-      "layout (location = 0) in vec4 position;\n"
-      "void main()\n{"
-      "gl_Position = position; }\n"
-      ;
-    std::string fragmentShader = 
-      "#version 330 core\n"
-      "layout (location = 0) out vec4 color;\n"
-      "void main(){\n"
-      "color = vec4(1.0, 0.0, 0.0, 1.0); } "
-      ;
-
-    unsigned int shader = CreateShader(vertexShader, fragmentShader);
+    unsigned int shader = ShaderLibrary::Get()->GetShader("Basic")->GetShaderProgramID();
     glUseProgram(shader);
 
 
@@ -129,13 +75,6 @@ namespace Mogra {
     {
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
-
-        // legacy code
-       /* glBegin(GL_TRIANGLES);
-        glVertex2f(-0.5f, -0.5f);
-        glVertex2f(0.f, 0.5f);
-        glVertex2f(0.5f, -0.5f);
-        glEnd();*/
 
         glDrawArrays(GL_TRIANGLES, 0, 3);
         /* Swap front and back buffers */
