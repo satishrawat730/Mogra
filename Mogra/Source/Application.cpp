@@ -9,8 +9,16 @@ namespace Mogra {
 
    // std::filesystem::copy("C:/Users/", "E:/Backup/");
 
-    mWindow = std::make_unique<Mogra::GLWindow>();
-    LoadShaders();
+    namespace fs = std::filesystem;
+
+      std::string path = R"(C:\_MyData\Code Projects\Project Mogra\Mogra\Assets\Shaders)";
+      for (const auto& entry : fs::directory_iterator(path))
+        std::cout << entry.path() << std::endl;
+    
+     mWindow = std::make_unique<Mogra::GLWindow>();
+     mWindow->Init();
+   
+   //LoadShaders();
   }
 
   bool Application::Run() {

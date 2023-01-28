@@ -117,7 +117,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir)3rdparty\glfw;$(ProjectDir)3rdparty\gl</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)3rdparty\glfw;$(ProjectDir)3rdparty\gl;$(ProjectDir)3rdParty\Glm\glm</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -133,7 +133,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)3rdparty\glfw;$(ProjectDir)3rdparty\gl</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)3rdparty\glfw;$(ProjectDir)3rdparty\gl;$(ProjectDir)3rdParty\Glm\glm</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -145,6 +145,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Singelton.cpp" />
+    <ClCompile Include="Source\Renderer.cpp" />
+    <ClCompile Include="Source\Mesh.cpp" />
+    <ClCompile Include="Source\MeshRenderer.cpp" />
     <ClCompile Include="Source\ShaderLibrary.cpp" />
     <ClCompile Include="Source\Shader.cpp" />
     <ClCompile Include="Source\Application.cpp" />
@@ -152,6 +156,11 @@
     <ClCompile Include="Source\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Primitives.h" />
+    <ClInclude Include="Source\Singelton.h" />
+    <ClInclude Include="Source\Renderer.h" />
+    <ClInclude Include="Source\Mesh.h" />
+    <ClInclude Include="Source\MeshRenderer.h" />
     <ClInclude Include="Source\ShaderLibrary.h" />
     <ClInclude Include="Source\Shader.h" />
     <ClInclude Include="Source\Application.h" />

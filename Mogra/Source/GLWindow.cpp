@@ -1,24 +1,24 @@
 #include "GLWindow.h"
 #include "ShaderLibrary.h"
+#include "Primitives.h"
 
 namespace Mogra {
 
-  GLWindow::GLWindow()
-  {
+  GLWindow::GLWindow(){
     /* Initialize the library */
     if (!glfwInit())
     {
       fprintf(stderr, "Error: GLFW Window couldn't be initialized\n");
-     // return false;
+      // return false;
     }
     /* Create a windowed mode window and its OpenGL context */
     window = glfwCreateWindow(WIN_WIDTH, WIN_HEIGTH, WINDOW_TITLE, NULL, NULL);
     if (!window)
     {
-        glfwTerminate();
-        fprintf(stderr, "Error: GLFW Window couldn't be initialized\n");
+      glfwTerminate();
+      fprintf(stderr, "Error: GLFW Window couldn't be initialized\n");
     }
-     /* Make the window's context current */
+    /* Make the window's context current */
     glfwMakeContextCurrent(window);
 
     // call glewInit after context is created
@@ -40,43 +40,34 @@ namespace Mogra {
       /* It is safe to use the ARB_vertex_program extension here. */
       //glGenProgramsARB(...);
     }
-
-    std::cout<< "GL Version : " << glGetString(GL_VERSION);
   }
 
   GLWindow::~GLWindow(){
      glfwTerminate();
   }
 
-  void GLWindow::Render() {
-    GLfloat g_vertex_buffer_data[] = {
-                -1.0f, -1.0f, 0.0f,
-                1.0f, -1.0f, 0.0f,
-                0.0f, 1.0f, 0.0f,
-    };
+  bool GLWindow::Init() {
 
-    GLuint vertexbuffer;
-    glGenBuffers(1, &vertexbuffer);
-    glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
+    std::cout << "GL Version : " << glGetString(GL_VERSION);
+    ShaderLibrary::Get()->LoadShaders();
 
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)(0 * sizeof(float)));
-    glEnableVertexAttribArray(0);
+    auto shader = ShaderLibrary::Get()->GetShader("Basic");
 
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-    //glBindVertexArray(0);
+    objTriangle = MeshRenderer::Create(Primitives::CreateTriangle(), *shader.get());
 
-    unsigned int shader = ShaderLibrary::Get()->GetShader("Basic")->GetShaderProgramID();
-    glUseProgram(shader);
+    return true;
+  }
 
-
+  void GLWindow::Render() {/*
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
 
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        //glDrawArrays(GL_TRIANGLES, 0, 3);
+        if(objTriangle)
+          objTriangle->Render();
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
 

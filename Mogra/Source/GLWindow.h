@@ -1,5 +1,6 @@
 #pragma once
 #include "StdHeader.h"
+#include "MeshRenderer.h"
 
 namespace Mogra {
     class GLWindow
@@ -8,11 +9,12 @@ namespace Mogra {
         GLWindow();
         ~GLWindow();
         
-        void Init();
-
+        bool Init();
         void Render();
 
     private:
         GLFWwindow* window = nullptr;
+        std::shared_ptr<MeshRenderer> objTriangle = nullptr;
+        UINT shader;
     };
 }

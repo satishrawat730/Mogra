@@ -18,11 +18,17 @@
     <Filter Include="Resource Files\Shaders">
       <UniqueIdentifier>{3cd36ab6-0a46-4ef7-a87a-b0c869ed231c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\3D">
+      <UniqueIdentifier>{408ca641-12d8-4633-8c3a-6f24a54d339d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics">
+      <UniqueIdentifier>{faa3bdda-3250-4e8d-8fca-6d63a6b6cc7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Abstract">
+      <UniqueIdentifier>{46aa3e5f-5f88-40b1-8546-5bf67ec5c597}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -34,6 +40,21 @@
     </ClCompile>
     <ClCompile Include="Source\ShaderLibrary.cpp">
       <Filter>Source Files\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mesh.cpp">
+      <Filter>Source Files\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MeshRenderer.cpp">
+      <Filter>Source Files\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Renderer.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Singelton.cpp">
+      <Filter>Source Files\Abstract</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -49,8 +70,23 @@
     <ClInclude Include="Source\ShaderLibrary.h">
       <Filter>Source Files\Shader</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Mesh.h">
+      <Filter>Source Files\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MeshRenderer.h">
+      <Filter>Source Files\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer.h">
+      <Filter>Source Files\Graphics</Filter>
+    </ClInclude>
     <ClInclude Include="Source\StdHeader.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Singelton.h">
+      <Filter>Source Files\Abstract</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Primitives.h">
+      <Filter>Source Files\3D</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

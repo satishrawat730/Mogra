@@ -10,15 +10,15 @@ namespace Mogra {
 
     ~Shader() = default;
 
-    unsigned int GetShaderProgramID() { return ShaderProgramID; }
+    UINT GetShaderProgramID() { return ShaderProgramID; }
 
   private:
     Shader() = default;
     Shader(std::string vertexShaderfilePath, std::string fragmentShaderfilePath);
     std::string GetShaderCode(std::string filePath);
-    unsigned int CompileShader(unsigned int type, const std::string& source);
-    unsigned int CreateShader(const std::string& vertexShader, const std::string& fragmentShader);
-
-    unsigned int ShaderProgramID;
+    UINT CompileShader(unsigned int type, const std::string& source);
+    UINT CreateShader(const std::string& vertexShader, const std::string& fragmentShader);
+    
+    UINT ShaderProgramID;
   };
 }
