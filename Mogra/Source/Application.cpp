@@ -16,9 +16,9 @@ namespace Mogra {
         std::cout << entry.path() << std::endl;
     
      mWindow = std::make_unique<Mogra::GLWindow>();
+     LoadShaders();
      mWindow->Init();
    
-   //LoadShaders();
   }
 
   bool Application::Run() {

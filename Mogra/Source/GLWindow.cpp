@@ -49,8 +49,7 @@ namespace Mogra {
   bool GLWindow::Init() {
 
     std::cout << "GL Version : " << glGetString(GL_VERSION);
-    ShaderLibrary::Get()->LoadShaders();
-
+    
     auto shader = ShaderLibrary::Get()->GetShader("Basic");
 
     objTriangle = MeshRenderer::Create(Primitives::CreateTriangle(), *shader.get());
@@ -65,7 +64,6 @@ namespace Mogra {
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
 
-        //glDrawArrays(GL_TRIANGLES, 0, 3);
         if(objTriangle)
           objTriangle->Render();
         /* Swap front and back buffers */
